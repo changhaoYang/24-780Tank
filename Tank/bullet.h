@@ -1,6 +1,5 @@
 #include "fssimplewindow.h"
-
-enum class Direction { UP, DOWN, LEFT, RIGHT };
+#include "direction.h"
 
 class Bullet {
 private:

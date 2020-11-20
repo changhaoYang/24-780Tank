@@ -35,6 +35,7 @@
 		55BD77A925686313000E66C5 /* bullet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bullet.h; sourceTree = "<group>"; };
 		55BD77AB256869C6000E66C5 /* base.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = base.cpp; sourceTree = "<group>"; };
 		55BD77AE256869F2000E66C5 /* base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
+		55BD77B025686FA0000E66C5 /* direction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = direction.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 				55BD77A925686313000E66C5 /* bullet.h */,
 				55BD77AB256869C6000E66C5 /* base.cpp */,
 				55BD77AE256869F2000E66C5 /* base.h */,
+				55BD77B025686FA0000E66C5 /* direction.h */,
 			);
 			path = Tank;
 			sourceTree = "<group>";

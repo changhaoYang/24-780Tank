@@ -19,7 +19,7 @@ int Bullet::getPosY() const {
     return y;
 }
 
-void Bullet::move(int speed) {
+void Bullet::move(const int speed) {
     switch (facing) {
         case Direction::UP:
             y -= speed;
