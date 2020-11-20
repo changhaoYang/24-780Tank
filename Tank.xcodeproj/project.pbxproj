@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55BD778225685C88000E66C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BD778125685C88000E66C5 /* AppDelegate.m */; };
 		55BD778425685C89000E66C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BD778325685C89000E66C5 /* Assets.xcassets */; };
 		55BD778725685C89000E66C5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BD778525685C89000E66C5 /* MainMenu.xib */; };
-		55BD778A25685C89000E66C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BD778925685C89000E66C5 /* main.m */; };
+		55BD779625685D1B000E66C5 /* fssimplewindowobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BD779425685D1B000E66C5 /* fssimplewindowobjc.m */; };
+		55BD779725685D1B000E66C5 /* fssimplewindowcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD779525685D1B000E66C5 /* fssimplewindowcpp.cpp */; };
+		55BD779B25685D35000E66C5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BD779A25685D35000E66C5 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		55BD777D25685C88000E66C5 /* Tank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tank.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		55BD778025685C88000E66C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		55BD778125685C88000E66C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		55BD778325685C89000E66C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55BD778625685C89000E66C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		55BD778825685C89000E66C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55BD778925685C89000E66C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		55BD778B25685C89000E66C5 /* Tank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tank.entitlements; sourceTree = "<group>"; };
+		55BD779325685D1B000E66C5 /* fssimplewindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fssimplewindow.h; sourceTree = "<group>"; };
+		55BD779425685D1B000E66C5 /* fssimplewindowobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fssimplewindowobjc.m; sourceTree = "<group>"; };
+		55BD779525685D1B000E66C5 /* fssimplewindowcpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fssimplewindowcpp.cpp; sourceTree = "<group>"; };
+		55BD779A25685D35000E66C5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55BD779B25685D35000E66C5 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +43,7 @@
 			children = (
 				55BD777F25685C88000E66C5 /* Tank */,
 				55BD777E25685C88000E66C5 /* Products */,
+				55BD779925685D34000E66C5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,15 +58,23 @@
 		55BD777F25685C88000E66C5 /* Tank */ = {
 			isa = PBXGroup;
 			children = (
-				55BD778025685C88000E66C5 /* AppDelegate.h */,
-				55BD778125685C88000E66C5 /* AppDelegate.m */,
+				55BD779325685D1B000E66C5 /* fssimplewindow.h */,
+				55BD779525685D1B000E66C5 /* fssimplewindowcpp.cpp */,
+				55BD779425685D1B000E66C5 /* fssimplewindowobjc.m */,
 				55BD778325685C89000E66C5 /* Assets.xcassets */,
 				55BD778525685C89000E66C5 /* MainMenu.xib */,
 				55BD778825685C89000E66C5 /* Info.plist */,
-				55BD778925685C89000E66C5 /* main.m */,
 				55BD778B25685C89000E66C5 /* Tank.entitlements */,
 			);
 			path = Tank;
+			sourceTree = "<group>";
+		};
+		55BD779925685D34000E66C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55BD779A25685D35000E66C5 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,8 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55BD778A25685C89000E66C5 /* main.m in Sources */,
-				55BD778225685C88000E66C5 /* AppDelegate.m in Sources */,
+				55BD779725685D1B000E66C5 /* fssimplewindowcpp.cpp in Sources */,
+				55BD779625685D1B000E66C5 /* fssimplewindowobjc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
