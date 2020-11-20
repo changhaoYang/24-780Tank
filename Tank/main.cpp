@@ -10,7 +10,13 @@ int main() {
     Bullet bullet = Bullet(400, 300, Direction::UP);
     Base base = Base(400, 585);
     
-    MyTank mytank = MyTank(200, 200);
+    MyTank mytank1 = MyTank(200, 300);
+    MyTank mytank2 = MyTank(200, 400);
+    mytank2.move(Direction::DOWN, 3);
+    MyTank mytank3 = MyTank(300, 300);
+    mytank3.move(Direction::LEFT, 3);
+    MyTank mytank4 = MyTank(300, 400);
+    mytank4.move(Direction::RIGHT, 3);
     
     while(FSKEY_NULL == FsInkey()) {
         FsPollDevice();
@@ -19,7 +25,10 @@ int main() {
         bullet.draw();
         base.draw();
         
-        mytank.draw();
+        mytank1.draw();
+        mytank2.draw();
+        mytank3.draw();
+        mytank4.draw();
         
         FsSwapBuffers();
         FsSleep(10);
