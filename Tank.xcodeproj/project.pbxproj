@@ -13,6 +13,8 @@
 		55BD779725685D1B000E66C5 /* fssimplewindowcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD779525685D1B000E66C5 /* fssimplewindowcpp.cpp */; };
 		55BD779B25685D35000E66C5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BD779A25685D35000E66C5 /* OpenGL.framework */; };
 		55BD779E25685DB3000E66C5 /* tank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD779C25685DB3000E66C5 /* tank.cpp */; };
+		55BD77A425686133000E66C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77A325686133000E66C5 /* main.cpp */; };
+		55BD77A725686301000E66C5 /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77A625686301000E66C5 /* bullet.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,9 @@
 		55BD779A25685D35000E66C5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		55BD779C25685DB3000E66C5 /* tank.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tank.cpp; sourceTree = "<group>"; };
 		55BD77A125685E5D000E66C5 /* tank.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tank.h; sourceTree = "<group>"; };
+		55BD77A325686133000E66C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		55BD77A625686301000E66C5 /* bullet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bullet.cpp; sourceTree = "<group>"; };
+		55BD77A925686313000E66C5 /* bullet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bullet.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +75,9 @@
 				55BD778B25685C89000E66C5 /* Tank.entitlements */,
 				55BD779C25685DB3000E66C5 /* tank.cpp */,
 				55BD77A125685E5D000E66C5 /* tank.h */,
+				55BD77A325686133000E66C5 /* main.cpp */,
+				55BD77A625686301000E66C5 /* bullet.cpp */,
+				55BD77A925686313000E66C5 /* bullet.h */,
 			);
 			path = Tank;
 			sourceTree = "<group>";
@@ -152,6 +160,8 @@
 			files = (
 				55BD779725685D1B000E66C5 /* fssimplewindowcpp.cpp in Sources */,
 				55BD779625685D1B000E66C5 /* fssimplewindowobjc.m in Sources */,
+				55BD77A725686301000E66C5 /* bullet.cpp in Sources */,
+				55BD77A425686133000E66C5 /* main.cpp in Sources */,
 				55BD779E25685DB3000E66C5 /* tank.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
