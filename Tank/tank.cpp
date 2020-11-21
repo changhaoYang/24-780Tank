@@ -133,7 +133,7 @@ void MyTank::move(const Direction direction, const int speed) {
 bool Tank::isValidPosition(const int x, const int y) {
     int blockXIndex = x / blockSize;
     int blockYIndex = y / blockSize;
-    return x > 0 && x < 800 && y > 0 && y < 600 && maze.ifWalkable(blockXIndex, blockYIndex);
+    return x > 0 && x < 800 && y > 0 && y < 600 && maze.ifWalkable(blockYIndex, blockXIndex);
 }
 
 bool Tank::isValidStep(const int x, const int y, const Direction direction, const int speed) {
