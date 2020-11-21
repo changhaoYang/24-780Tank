@@ -18,6 +18,8 @@ int main() {
     MyTank mytank4 = MyTank(300, 400);
     mytank4.move(Direction::RIGHT, 3);
     
+    EnemyTank enemyTank = EnemyTank(400, 400);
+    
     while(FSKEY_NULL == FsInkey()) {
         FsPollDevice();
         glClear(GL_DEPTH_BUFFER_BIT|GL_COLOR_BUFFER_BIT);
@@ -29,6 +31,9 @@ int main() {
         mytank2.draw();
         mytank3.draw();
         mytank4.draw();
+        
+        enemyTank.draw();
+        enemyTank.move(3);
         
         FsSwapBuffers();
         FsSleep(10);

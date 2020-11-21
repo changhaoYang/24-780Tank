@@ -1,5 +1,8 @@
 #include "fssimplewindow.h"
 #include "direction.h"
+#include <map>
+
+const int fireFrequency = 5;
 
 class Tank {
 protected:
@@ -10,6 +13,7 @@ protected:
 public:
     Tank(const int x, const int y);
     void draw() const;
+    void decreaseHp();
 };
 
 class MyTank: public Tank {
@@ -20,6 +24,8 @@ public:
 };
 
 class EnemyTank: public Tank {
+private:
+    int steps = 0;
 public:
     using Tank::Tank;
     

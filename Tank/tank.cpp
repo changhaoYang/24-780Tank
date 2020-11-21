@@ -2,11 +2,22 @@
 
 #include "tank.h"
 
+std::map<Direction, Direction> rotationMap = {
+    {Direction::UP, Direction::RIGHT},
+    {Direction::RIGHT, Direction::DOWN},
+    {Direction::DOWN, Direction::LEFT},
+    {Direction::LEFT, Direction::UP}
+};
+
 Tank::Tank(const int x, const int y) {
     this->hp = 3;
     this->x = x;
     this->y = y;
     this->facing = Direction::UP;
+}
+
+void Tank::decreaseHp() {
+    --hp;
 }
 
 void drawVerticalTank(const int x, const int y, const bool isUp) {
@@ -115,5 +126,50 @@ void MyTank::move(const Direction direction, const int speed) {
             x += speed;
             facing = Direction::RIGHT;
             break;
+    }
+}
+
+bool isValidPosition(const int x, const int y) {
+    // TODO: add condition for walls
+    return x > 0 && x < 800 && y > 0 && y < 600;
+}
+
+bool isValidStep(const int x, const int y, const Direction direction, const int speed) {
+    int nextX, nextY;
+    switch (direction) {
+        case Direction::UP:
+            nextY = y - speed;
+            return isValidPosition(x, nextY);
+        case Direction::DOWN:
+            nextY = y - speed;
+            return isValidPosition(x, nextY);
+        case Direction::LEFT:
+            nextX = x - speed;
+            return isValidPosition(nextX, y);
+        case Direction::RIGHT:
+            nextX = x + speed;
+            return isValidPosition(nextX, y);
+    }
+}
+
+void EnemyTank::move(const int speed) {
+    if (isValidStep(x, y, facing, speed)) {
+        switch (facing) {
+            case Direction::UP:
+                y -= speed;
+                break;
+            case Direction::DOWN:
+                y += speed;
+                break;
+            case Direction::LEFT:
+                x -= speed;
+                break;
+            case Direction::RIGHT:
+                x += speed;
+                break;
+        }
+    } else {
+        // Change facing
+        facing = rotationMap.at(facing);
     }
 }
