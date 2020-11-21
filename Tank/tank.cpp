@@ -9,10 +9,11 @@ std::map<Direction, Direction> rotationMap = {
     {Direction::LEFT, Direction::UP}
 };
 
-Tank::Tank(const int x, const int y) {
+Tank::Tank(const int x, const int y, const Maze &maze) {
     this->hp = 3;
     this->x = x;
     this->y = y;
+    this->maze = maze;
     this->facing = Direction::UP;
 }
 
@@ -129,19 +130,20 @@ void MyTank::move(const Direction direction, const int speed) {
     }
 }
 
-bool isValidPosition(const int x, const int y) {
-    // TODO: add condition for walls
-    return x > 0 && x < 800 && y > 0 && y < 600;
+bool Tank::isValidPosition(const int x, const int y) {
+    int blockXIndex = x / blockSize;
+    int blockYIndex = y / blockSize;
+    return x > 0 && x < 800 && y > 0 && y < 600 && maze.ifWalkable(blockXIndex, blockYIndex);
 }
 
-bool isValidStep(const int x, const int y, const Direction direction, const int speed) {
+bool Tank::isValidStep(const int x, const int y, const Direction direction, const int speed) {
     int nextX, nextY;
     switch (direction) {
         case Direction::UP:
             nextY = y - speed;
             return isValidPosition(x, nextY);
         case Direction::DOWN:
-            nextY = y - speed;
+            nextY = y + speed;
             return isValidPosition(x, nextY);
         case Direction::LEFT:
             nextX = x - speed;
@@ -153,7 +155,7 @@ bool isValidStep(const int x, const int y, const Direction direction, const int 
 }
 
 void EnemyTank::move(const int speed) {
-    if (isValidStep(x, y, facing, speed)) {
+    if (isValidStep(x, y, facing, speed + 7)) {
         switch (facing) {
             case Direction::UP:
                 y -= speed;
@@ -169,7 +171,7 @@ void EnemyTank::move(const int speed) {
                 break;
         }
     } else {
-        // Change facing
+        // Rotate 90°
         facing = rotationMap.at(facing);
     }
 }

@@ -16,6 +16,7 @@
 		55BD77A425686133000E66C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77A325686133000E66C5 /* main.cpp */; };
 		55BD77A725686301000E66C5 /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77A625686301000E66C5 /* bullet.cpp */; };
 		55BD77AC256869C6000E66C5 /* base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77AB256869C6000E66C5 /* base.cpp */; };
+		55BD77B425689A10000E66C5 /* block_maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77B225689A10000E66C5 /* block_maze.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		55BD77AB256869C6000E66C5 /* base.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = base.cpp; sourceTree = "<group>"; };
 		55BD77AE256869F2000E66C5 /* base.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = base.h; sourceTree = "<group>"; };
 		55BD77B025686FA0000E66C5 /* direction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = direction.h; sourceTree = "<group>"; };
+		55BD77B225689A10000E66C5 /* block_maze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = block_maze.cpp; sourceTree = "<group>"; };
+		55BD77B325689A10000E66C5 /* block_maze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = block_maze.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 		55BD777F25685C88000E66C5 /* Tank */ = {
 			isa = PBXGroup;
 			children = (
+				55BD77B225689A10000E66C5 /* block_maze.cpp */,
+				55BD77B325689A10000E66C5 /* block_maze.h */,
 				55BD779325685D1B000E66C5 /* fssimplewindow.h */,
 				55BD779525685D1B000E66C5 /* fssimplewindowcpp.cpp */,
 				55BD779425685D1B000E66C5 /* fssimplewindowobjc.m */,
@@ -171,6 +176,7 @@
 				55BD77A725686301000E66C5 /* bullet.cpp in Sources */,
 				55BD77A425686133000E66C5 /* main.cpp in Sources */,
 				55BD779E25685DB3000E66C5 /* tank.cpp in Sources */,
+				55BD77B425689A10000E66C5 /* block_maze.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

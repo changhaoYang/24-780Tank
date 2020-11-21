@@ -8,21 +8,27 @@
 int main() {
     FsOpenWindow(16, 16, 800, 600, 1);
     Bullet bullet = Bullet(400, 300, Direction::UP);
-    Base base = Base(400, 585);
+    Base base = Base(300, 585);
     
-    MyTank mytank1 = MyTank(200, 300);
-    MyTank mytank2 = MyTank(200, 400);
+    Maze maze = Maze();
+    
+    MyTank mytank1 = MyTank(200, 300, maze);
+    MyTank mytank2 = MyTank(200, 400, maze);
     mytank2.move(Direction::DOWN, 3);
-    MyTank mytank3 = MyTank(300, 300);
+    MyTank mytank3 = MyTank(300, 300, maze);
     mytank3.move(Direction::LEFT, 3);
-    MyTank mytank4 = MyTank(300, 400);
+    MyTank mytank4 = MyTank(300, 400, maze);
     mytank4.move(Direction::RIGHT, 3);
     
-    EnemyTank enemyTank = EnemyTank(400, 400);
+    EnemyTank enemyTank1 = EnemyTank(80, 100, maze);
+    EnemyTank enemyTank2 = EnemyTank(150, 250, maze);
+    EnemyTank enemyTank3 = EnemyTank(250, 300, maze);
     
-    while(FSKEY_NULL == FsInkey()) {
+    while(FSKEY_ESC != FsInkey()) {
         FsPollDevice();
         glClear(GL_DEPTH_BUFFER_BIT|GL_COLOR_BUFFER_BIT);
+        
+        maze.Draw();
         
         bullet.draw();
         base.draw();
@@ -32,11 +38,15 @@ int main() {
         mytank3.draw();
         mytank4.draw();
         
-        enemyTank.draw();
-        enemyTank.move(3);
+        enemyTank1.draw();
+        enemyTank1.move(3);
+        enemyTank2.draw();
+        enemyTank2.move(3);
+        enemyTank3.draw();
+        enemyTank3.move(3);
         
         FsSwapBuffers();
-        FsSleep(10);
+        FsSleep(25);
     }
     return 0;
 }
