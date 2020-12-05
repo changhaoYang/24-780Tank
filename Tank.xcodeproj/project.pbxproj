@@ -7,31 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55BD778425685C89000E66C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55BD778325685C89000E66C5 /* Assets.xcassets */; };
-		55BD778725685C89000E66C5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55BD778525685C89000E66C5 /* MainMenu.xib */; };
+		55423C3B257B2F9B0004A58A /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55423C35257B2F9B0004A58A /* game.cpp */; };
+		55423C3C257B2F9B0004A58A /* runner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55423C36257B2F9B0004A58A /* runner.cpp */; };
+		55423C45257B33190004A58A /* ysglfontdata.c in Sources */ = {isa = PBXBuildFile; fileRef = 55423C43257B33190004A58A /* ysglfontdata.c */; };
+		55423C49257BF4270004A58A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55423C48257BF4270004A58A /* Info.plist */; };
 		55BD779625685D1B000E66C5 /* fssimplewindowobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BD779425685D1B000E66C5 /* fssimplewindowobjc.m */; };
 		55BD779725685D1B000E66C5 /* fssimplewindowcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD779525685D1B000E66C5 /* fssimplewindowcpp.cpp */; };
 		55BD779B25685D35000E66C5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BD779A25685D35000E66C5 /* OpenGL.framework */; };
 		55BD779E25685DB3000E66C5 /* tank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD779C25685DB3000E66C5 /* tank.cpp */; };
-		55BD77A425686133000E66C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77A325686133000E66C5 /* main.cpp */; };
 		55BD77A725686301000E66C5 /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77A625686301000E66C5 /* bullet.cpp */; };
 		55BD77AC256869C6000E66C5 /* base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77AB256869C6000E66C5 /* base.cpp */; };
 		55BD77B425689A10000E66C5 /* block_maze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD77B225689A10000E66C5 /* block_maze.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55423C35257B2F9B0004A58A /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		55423C36257B2F9B0004A58A /* runner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = runner.cpp; sourceTree = "<group>"; };
+		55423C38257B2F9B0004A58A /* game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = game.h; sourceTree = "<group>"; };
+		55423C43257B33190004A58A /* ysglfontdata.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ysglfontdata.c; sourceTree = "<group>"; };
+		55423C44257B33190004A58A /* ysglfontdata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ysglfontdata.h; sourceTree = "<group>"; };
+		55423C48257BF4270004A58A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55BD777D25685C88000E66C5 /* Tank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tank.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		55BD778325685C89000E66C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		55BD778625685C89000E66C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		55BD778825685C89000E66C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55BD778B25685C89000E66C5 /* Tank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tank.entitlements; sourceTree = "<group>"; };
 		55BD779325685D1B000E66C5 /* fssimplewindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fssimplewindow.h; sourceTree = "<group>"; };
 		55BD779425685D1B000E66C5 /* fssimplewindowobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fssimplewindowobjc.m; sourceTree = "<group>"; };
 		55BD779525685D1B000E66C5 /* fssimplewindowcpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fssimplewindowcpp.cpp; sourceTree = "<group>"; };
 		55BD779A25685D35000E66C5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		55BD779C25685DB3000E66C5 /* tank.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tank.cpp; sourceTree = "<group>"; };
 		55BD77A125685E5D000E66C5 /* tank.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tank.h; sourceTree = "<group>"; };
-		55BD77A325686133000E66C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		55BD77A625686301000E66C5 /* bullet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bullet.cpp; sourceTree = "<group>"; };
 		55BD77A925686313000E66C5 /* bullet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bullet.h; sourceTree = "<group>"; };
 		55BD77AB256869C6000E66C5 /* base.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = base.cpp; sourceTree = "<group>"; };
@@ -73,18 +75,19 @@
 		55BD777F25685C88000E66C5 /* Tank */ = {
 			isa = PBXGroup;
 			children = (
+				55423C48257BF4270004A58A /* Info.plist */,
+				55423C43257B33190004A58A /* ysglfontdata.c */,
+				55423C44257B33190004A58A /* ysglfontdata.h */,
+				55423C35257B2F9B0004A58A /* game.cpp */,
+				55423C38257B2F9B0004A58A /* game.h */,
+				55423C36257B2F9B0004A58A /* runner.cpp */,
 				55BD77B225689A10000E66C5 /* block_maze.cpp */,
 				55BD77B325689A10000E66C5 /* block_maze.h */,
 				55BD779325685D1B000E66C5 /* fssimplewindow.h */,
 				55BD779525685D1B000E66C5 /* fssimplewindowcpp.cpp */,
 				55BD779425685D1B000E66C5 /* fssimplewindowobjc.m */,
-				55BD778325685C89000E66C5 /* Assets.xcassets */,
-				55BD778525685C89000E66C5 /* MainMenu.xib */,
-				55BD778825685C89000E66C5 /* Info.plist */,
-				55BD778B25685C89000E66C5 /* Tank.entitlements */,
 				55BD779C25685DB3000E66C5 /* tank.cpp */,
 				55BD77A125685E5D000E66C5 /* tank.h */,
-				55BD77A325686133000E66C5 /* main.cpp */,
 				55BD77A625686301000E66C5 /* bullet.cpp */,
 				55BD77A925686313000E66C5 /* bullet.h */,
 				55BD77AB256869C6000E66C5 /* base.cpp */,
@@ -158,8 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55BD778425685C89000E66C5 /* Assets.xcassets in Resources */,
-				55BD778725685C89000E66C5 /* MainMenu.xib in Resources */,
+				55423C49257BF4270004A58A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,27 +173,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				55BD779725685D1B000E66C5 /* fssimplewindowcpp.cpp in Sources */,
+				55423C45257B33190004A58A /* ysglfontdata.c in Sources */,
+				55423C3B257B2F9B0004A58A /* game.cpp in Sources */,
 				55BD779625685D1B000E66C5 /* fssimplewindowobjc.m in Sources */,
 				55BD77AC256869C6000E66C5 /* base.cpp in Sources */,
 				55BD77A725686301000E66C5 /* bullet.cpp in Sources */,
-				55BD77A425686133000E66C5 /* main.cpp in Sources */,
+				55423C3C257B2F9B0004A58A /* runner.cpp in Sources */,
 				55BD779E25685DB3000E66C5 /* tank.cpp in Sources */,
 				55BD77B425689A10000E66C5 /* block_maze.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		55BD778525685C89000E66C5 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				55BD778625685C89000E66C5 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		55BD778C25685C89000E66C5 /* Debug */ = {

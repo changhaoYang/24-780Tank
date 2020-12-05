@@ -2,7 +2,7 @@
 
 #include "block_maze.h"
 
-bool DEBUG_MODE = true;
+bool DEBUG_MODE = false;
 
 Maze::Maze(const int l)
 {
