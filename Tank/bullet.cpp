@@ -43,10 +43,20 @@ void Bullet::move(const int speed) {
 void Bullet::draw() const {
     glColor3ub(0, 0, 0);
     glBegin(GL_QUADS);
-    glVertex2i(x - width / 2, y - height / 2);
-    glVertex2i(x - width / 2, y + height / 2);
-    glVertex2i(x + width / 2, y + height / 2);
-    glVertex2i(x + width / 2, y - height / 2);
+    
+    if (facing == Direction::UP || facing == Direction::DOWN) {
+        glVertex2i(x - width / 2, y - height / 2);
+        glVertex2i(x - width / 2, y + height / 2);
+        glVertex2i(x + width / 2, y + height / 2);
+        glVertex2i(x + width / 2, y - height / 2);
+    } else {
+        // Left and right
+        glVertex2i(x - height / 2, y - width / 2);
+        glVertex2i(x - height / 2, y + width / 2);
+        glVertex2i(x + height / 2, y + width / 2);
+        glVertex2i(x + height / 2, y - width / 2);
+    }
+    
     glEnd();
 }
 
