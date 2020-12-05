@@ -5,9 +5,6 @@ GameControl::GameControl(int x[], int y[], Direction dir[], Maze &chosenMaze, Ba
 	appearanceX = x;
 	appearanceY = y;
 	appearanceDir = dir;
-	score = 0;
-	lives = 3;
-	appearanceCnt = 0;
 	maze = chosenMaze;
 	base = chosenBase;
 
@@ -15,9 +12,13 @@ GameControl::GameControl(int x[], int y[], Direction dir[], Maze &chosenMaze, Ba
 }
 
 void GameControl::Init() {
-	EnemyTank enemyTank = EnemyTank(appearanceX[0], appearanceY[0], &maze);
 	myTank = new MyTank(RESPAWN_X, RESPAWN_Y, &maze);
-	enemyTanks.push_back(enemyTank);
+	ProduceTank();
+
+	score = 0;
+	lives = 3;
+	appearanceCnt = 0;
+	timeCount = 0;
 }
 
 /** 
@@ -38,16 +39,11 @@ bool GameControl::Respawn() {
  * Update all elements' position
  */
 void GameControl::UpdatePosition() {
-	for (auto &enemyBullet : enemyBullets) {
-		enemyBullet.move(BULLET_SPEED);
-		
-	}
 	for (auto &enemyTank : enemyTanks) {
 		enemyTank.move(TANK_SPEED);
+		enemyTank.getBullet().move(BULLET_SPEED);
 	}
-	for (auto &myBullet : myBullets) {
-		myBullet.move(BULLET_SPEED);
-	}
+	myTank->getBullet().move(BULLET_SPEED);
 }
 
 /**
@@ -62,16 +58,13 @@ void GameControl::MoveTank(Direction dir) {
  * Draw all elements
  */
 void GameControl::Draw() {
-	for (auto enemyBullet : enemyBullets) {
-		enemyBullet.draw();
-//		std::cout << "the pos of x: " << enemyBullet.getPosX() << "the pos of y: " << enemyBullet.getPosY() << std::endl;
-	}
 	for (auto enemyTank : enemyTanks) {
 		enemyTank.draw();
+		if (enemyTank.isBullet()) {
+			enemyTank.getBullet().draw();
+		}
 	}
-	for (auto myBullet : myBullets) {
-		myBullet.draw();
-	}
+	myTank->getBullet().draw();
 	maze.Draw();
 	myTank->draw();
 }
@@ -80,20 +73,24 @@ void GameControl::Draw() {
  * Update all bullets' existence state
  */
 void GameControl::UpdateAllBullet(bool &win) {
-	for (auto i = 0; i < enemyBullets.size(); i++) {
-		if (CheckMyTankHit(enemyBullets[i])) {
-			DeleteEnemyBullet(i);
-			myTank->decreaseHp();
-			i--;
+	for (auto i = 0; i < enemyTanks.size(); i++) {
+		if (!enemyTanks[i].isBullet()) {
+			continue;
 		}
-		else if (CheckBaseHit(enemyBullets[i], base)) {
+
+		Bullet bullet = enemyTanks[i].getBullet();
+		std::cout << "the pos of bullet: " << bullet.getPosX() << std::endl;
+		enemyTanks[i].moveBullet(BULLET_SPEED);
+		if (CheckMyTankHit(bullet)) {
+			enemyTanks[i].disBullet();
+			myTank->decreaseHp();
+		}
+		else if (CheckBaseHit(bullet, base)) {
 			win = false;
 			return;
 		}
-		else if(DeleteBlock(enemyBullets[i])){
-            std::cout << "Delete block" << std::endl;
-			DeleteEnemyBullet(i);
-			i--;
+		else if(DeleteBlock(bullet)){
+			enemyTanks[i].disBullet();
 		}
 	}
 	if (myTank->getHp() == 0) {
@@ -103,25 +100,23 @@ void GameControl::UpdateAllBullet(bool &win) {
 		}
 	}
 
-	for (auto i = 0; i < myBullets.size(); i++) {
-		auto tanks_size = enemyTanks.size();
-		for (auto j = 0; j < tanks_size; j++) {
-			if (CheckEnemyTankHit(myBullets[j], enemyTanks[j])) {
-				DeleteMyBullet(i);
-				enemyTanks[j].decreaseHp();
-				if (enemyTanks[j].getHp() == 0) {
-					DeleteTank(j);
-				}
-				i--;
-				break;
-			}
-		}
-
-		if (DeleteBlock(myBullets[i])) {
-			DeleteEnemyBullet(i);
-			i--;
-		}
-	}
+    // TODO: Compile error
+//	Bullet *myBullet = &(myTank->getBullet());
+//	for (auto j = 0; j < enemyTanks.size(); j++) {
+//		myBullet->move(BULLET_SPEED);
+//		if (CheckEnemyTankHit(*myBullet, enemyTanks[j])) {
+//			myTank->disBullet();
+//			enemyTanks[j].decreaseHp();
+//			if (enemyTanks[j].getHp() == 0) {
+//				DeleteTank(j);
+//			}
+//			break;
+//		}
+//	}
+//
+//	if (myTank->isBullet() && DeleteBlock(*myBullet)) {
+//		myTank->disBullet();
+//	}
 
 	for (auto &enemyTank : enemyTanks) {
 		Fire(enemyTank);
@@ -132,9 +127,12 @@ void GameControl::UpdateAllBullet(bool &win) {
 void GameControl::Fire(Tank &tank) {
 	tank.increaseCount();
 	if (tank.getCount() == 0) {
-		Bullet bullet = Bullet(tank.getPosX(), tank.getPosY(), tank.getDir());
-		enemyBullets.push_back(bullet);
+		tank.fire();
 	}
+}
+
+void GameControl::myFire() {
+	Fire(*myTank);
 }
 
 /**
@@ -178,21 +176,11 @@ void GameControl::DeleteTank(int index) {
  * Delete blocks that have the same position with bullets
  */
 bool GameControl::DeleteBlock(Bullet bullet) {
-	return maze.deleteBlock(bullet.getPosX()/GRID_SIZE, bullet.getPosY()/GRID_SIZE);
-}
-
-/**
- * Delete blocks that have the same position with enemy's bullets
- */
-void GameControl::DeleteEnemyBullet(int index) {
-	enemyBullets.erase(enemyBullets.begin() + index);
-}
-
-/**
- * Delete blocks that have the same position with player's bullets
- */
-void GameControl::DeleteMyBullet(int index) {
-	myBullets.erase(myBullets.begin() + index);
+	int i = bullet.getPosX() / GRID_SIZE;
+	int j = bullet.getPosY() / GRID_SIZE;
+	bool output = maze.ifBulletDisappear(i, j);
+	maze.deleteBlock(i, j);
+	return output;
 }
 
 /**
@@ -204,6 +192,7 @@ void GameControl::UpdateScore() {
 
 void GameControl::ProduceTank() {
 	if (timeCount == 0) {
+		
 		if (appearanceCnt == 3) {
 			appearanceCnt = 0;
 		}
@@ -219,6 +208,14 @@ void GameControl::increaseTime() {
 	if (timeCount == 500) {
 		timeCount = 0;
 	}
+}
+
+int GameControl::GetLives() {
+	return lives;
+}
+
+int GameControl::GetScore() {
+	return score;
 }
 
 

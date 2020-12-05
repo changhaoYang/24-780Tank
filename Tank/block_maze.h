@@ -22,12 +22,14 @@ public:
 class Maze
 {
 public:
-	Maze();//constructor, initialize maze according to level
+	Maze() = default;
+	Maze(const int l);//constructor, initialize maze according to level
 	bool deleteBlock(int i, int j);//will delete a block if it is breakable 
 	bool ifWalkable(int i, int j);
 	bool ifBulletDisappear(int i, int j);
 	void Draw(void) const;
 private:
 	block blocks[LineNum][ColNum];
+	int level;
 };
 

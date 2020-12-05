@@ -26,6 +26,9 @@ public:
 	void increaseTime();
 	void UpdateAllBullet(bool &win);
 	void ProduceTank();
+	void myFire();
+	int GetScore();
+	int GetLives();
 	void PlayBGM();
 	void PlaySound();
 	void PrintResult();
@@ -36,16 +39,11 @@ private:
 	bool CheckBaseHit(Bullet bullet, Base base);
 	void DeleteTank(int index);
 	bool DeleteBlock(Bullet bullet);
-	void DeleteEnemyBullet(int index);
-	void DeleteMyBullet(int index);
 	void UpdateScore();
 
-private:
 	int score;
 	MyTank *myTank;
 	std::vector<EnemyTank> enemyTanks;
-	std::vector<Bullet> enemyBullets;
-	std::vector<Bullet> myBullets;
 	Maze maze;
 	int lives;
 	int *appearanceX;

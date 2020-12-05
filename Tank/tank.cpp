@@ -3,18 +3,12 @@
 #include "tank.h"
 #include <iostream>
 
-//std::map<Direction, Direction> rotationMap = {
-//    {Direction::UP, Direction::RIGHT},
-//    {Direction::RIGHT, Direction::DOWN},
-//    {Direction::DOWN, Direction::LEFT},
-//    {Direction::LEFT, Direction::UP}
-//};
-
 Direction directions[4] = {
     Direction::UP, Direction::RIGHT, Direction::LEFT, Direction::DOWN
 };
 
 Tank::Tank(const int x, const int y, Maze* maze) {
+	is_bullet_ = false;
     hp = 3;
 	fireCount = 0;
     this->x = x;
@@ -146,7 +140,7 @@ void MyTank::move(const Direction direction, const int speed) {
 bool Tank::isValidPosition(const int x, const int y) {
     int blockXIndex = x / blockSize;
     int blockYIndex = y / blockSize;
-    return x > 0 && x < 800 && y > 0 && y < 600 && maze->ifWalkable(blockXIndex, blockYIndex);
+    return x > 0 && x < 800 && y > 0 && y < 600 && maze->ifWalkable(blockYIndex, blockXIndex);
 }
 
 bool Tank::isValidStep(const int x, const int y, const Direction direction, const int speed) {
@@ -168,7 +162,7 @@ bool Tank::isValidStep(const int x, const int y, const Direction direction, cons
 }
 
 void EnemyTank::move(const int speed) {
-    if (isValidStep(x, y, facing, speed + 15)) {
+    if (isValidStep(x, y, facing, speed + 7)) {
         switch (facing) {
             case Direction::UP:
                 y -= speed;
@@ -185,10 +179,29 @@ void EnemyTank::move(const int speed) {
         }
     } else {
         int result = rand() % 4;
-        // Rotate 90°
-        // facing = rotationMap.at(facing);
         facing = directions[result];
     }
+}
+
+void Tank::fire() {
+	bullet = Bullet(x, y, facing);
+	is_bullet_ = true;
+}
+
+void Tank::disBullet() {
+	is_bullet_ = false;
+}
+
+void Tank::moveBullet(const int speed) {
+	bullet.move(speed);
+}
+
+bool Tank::isBullet() {
+	return is_bullet_;
+}
+
+Bullet Tank::getBullet() {
+	return bullet;
 }
 
 int Tank::getPosX() {

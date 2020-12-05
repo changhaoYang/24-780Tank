@@ -5,6 +5,10 @@
 const int width = 4;
 const int height = 10;
 
+Bullet::Bullet() {
+
+}
+
 Bullet::Bullet(const int x, const int y, const Direction facing) {
     this->x = x;
     this->y = y;

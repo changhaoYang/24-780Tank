@@ -2,11 +2,11 @@
 
 static const int UPDATE_TIME = 20;
 int main(void) {
-	int x[]{ 500, 600, 700 };
+	int x[]{ 300, 50, 500 };
 	int y[]{ 50, 100, 150 };
 	Direction dir[]{ Direction::DOWN, Direction::DOWN, Direction::DOWN };
 	Base base = Base(400, 500);
-	Maze maze;
+	Maze maze(2);
 	GameControl gameControl = GameControl(x, y, dir, maze, base);
 
 	FsOpenWindow(16, 16, 800, 600, 1);
@@ -22,8 +22,8 @@ int main(void) {
 		gameControl.Draw();
 		gameControl.UpdatePosition();
 		gameControl.UpdateAllBullet(win);
-		/*gameControl.ProduceTank();
-		gameControl.increaseTime();*/
+		gameControl.ProduceTank();
+		gameControl.increaseTime();
 
 		FsSwapBuffers();
 		FsSleep(UPDATE_TIME);

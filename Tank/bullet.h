@@ -8,6 +8,7 @@ private:
     Direction facing;
     
 public:
+	Bullet();
     Bullet(const int x, const int y, const Direction facing);
     int getPosX() const;
     int getPosY() const;

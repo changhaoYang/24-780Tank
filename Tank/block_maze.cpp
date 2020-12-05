@@ -1,8 +1,12 @@
+#define GL_SILENCE_DEPRECATION
+
 #include "block_maze.h"
-int level = 2;
-Maze::Maze(void)
+
+bool DEBUG_MODE = true;
+
+Maze::Maze(const int l)
 {
-	
+	level = l;
 	int InitialBlocks1[LineNum][ColNum] = {
 								 {0,0,0,0,0,   0,0,0,0,0,  0,0,0,0,0,  0,0,0,0,0},//0
 								 {0,0,0,0,0,   0,0,0,0,0,  0,0,0,0,0,  0,0,0,0,0},//1
@@ -53,7 +57,6 @@ Maze::Maze(void)
 								 {2,0,1,0,0,   0,0,0,1,1,  1,1,0,0,0,  0,0,1,0,0},//17
 								 {0,0,1,0,0,   0,0,2,1,0,  0,1,0,0,0,  0,0,0,1,0},//18
 								 {2,0,1,0,0,   0,0,2,1,0,  0,1,0,0,0,  0,0,0,0,1} };//19
-    
 	
 	int InitialBlocks3[LineNum][ColNum] = {
 								 {0,2,2,0,0,   0,0,0,0,0,  0,0,0,0,0,  0,0,0,0,0},//0
@@ -150,7 +153,7 @@ bool Maze::ifWalkable(int i, int j)
 {
 	if (0 <= i && i < ColNum && 0 <= j && j < LineNum)
 	{
-		if (blocks[j][i].bType == 0) 
+		if (blocks[i][j].bType == 0) 
 		{
 			return true;
 		}
@@ -216,10 +219,10 @@ void block::DrawBlock(void)const
 		glVertex2i(x * BlockSize,  y * BlockSize);
 		glEnd();
 
-        
-        glRasterPos2d(x * BlockSize + BlockSize / 2, y * BlockSize + BlockSize / 2);
-        YsGlDrawFontBitmap6x7("1");
-		
+        if (DEBUG_MODE) {
+            glRasterPos2d(x * BlockSize + BlockSize / 2, y * BlockSize + BlockSize / 2);
+            YsGlDrawFontBitmap6x7("1");
+        }
 	}
 	else if (bType == 2)
 	{
@@ -259,13 +262,15 @@ void block::DrawBlock(void)const
 		glVertex2i(x * BlockSize, y * BlockSize);
 		glEnd();
         
-        glRasterPos2d(x * BlockSize + BlockSize / 2, y * BlockSize + BlockSize / 2);
-        YsGlDrawFontBitmap6x7("2");
-
-	}
-    else {
-        glRasterPos2d(x * BlockSize + BlockSize / 2, y * BlockSize + BlockSize / 2);
-        YsGlDrawFontBitmap6x7("0");
+        if (DEBUG_MODE) {
+            glRasterPos2d(x * BlockSize + BlockSize / 2, y * BlockSize + BlockSize / 2);
+            YsGlDrawFontBitmap6x7("2");
+        }
+    } else {
+        if (DEBUG_MODE) {
+            glRasterPos2d(x * BlockSize + BlockSize / 2, y * BlockSize + BlockSize / 2);
+            YsGlDrawFontBitmap6x7("0");
+        }
     }
 	
 }
