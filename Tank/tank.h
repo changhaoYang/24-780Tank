@@ -12,6 +12,7 @@ protected:
     int hp;
     int x, y;
 	int fireCount;
+    bool isEnemy; // Add for drawing tanks with different color
     Direction facing;
     Maze* maze;
 	Bullet bullet;
@@ -39,7 +40,7 @@ public:
 
 class MyTank: public Tank {
 public:
-    using Tank::Tank;
+    MyTank(const int x, const int y, Maze* maze);
     
     void move(const Direction direction, const int speed);
 };
@@ -48,7 +49,7 @@ class EnemyTank: public Tank {
 private:
     int steps = 0;
 public:
-    using Tank::Tank;
+    EnemyTank(const int x, const int y, Maze* maze);
     
     void move(const int speed);
 };

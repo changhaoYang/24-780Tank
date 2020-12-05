@@ -92,7 +92,12 @@ void drawHorizontalTank(const int x, const int y, const bool isLeft) {
 
 void Tank::draw() const {
     // Draw tank base
-    glColor3ub(0, 255, 0);
+    if (isEnemy) {
+        glColor3ub(194, 126, 217);
+    } else {
+        glColor3ub(0, 255, 0);
+    }
+    
     glBegin(GL_QUADS);
     glVertex2i(x - 5, y - 5);
     glVertex2i(x + 5, y - 5);
@@ -114,6 +119,14 @@ void Tank::draw() const {
             drawHorizontalTank(x, y, false);
             break;
     }
+}
+
+MyTank::MyTank(const int x, const int y, Maze* maze) : Tank(x, y, maze) {
+    this->isEnemy = false;
+}
+
+EnemyTank::EnemyTank(const int x, const int y, Maze* maze) : Tank(x, y, maze) {
+    this->isEnemy = true;
 }
 
 void MyTank::move(const Direction direction, const int speed) {
