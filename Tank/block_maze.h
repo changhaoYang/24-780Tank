@@ -3,6 +3,7 @@
 #include<iostream>
 //#include <vector>
 #include"fssimplewindow.h"
+#include "ysglfontdata.h"
 
 #define BlockSize 30
 #define LineNum 20

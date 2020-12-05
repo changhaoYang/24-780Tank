@@ -16,7 +16,7 @@ static const int BULLET_SPEED = 4;
 
 class GameControl {
 public:
-	GameControl(int x[], int y[], Direction dir[], Maze chosenMaze, Base chosenBase);
+	GameControl(int x[], int y[], Direction dir[], Maze &chosenMaze, Base chosenBase);
 	void Init();
 	bool Respawn();
 	void UpdatePosition();

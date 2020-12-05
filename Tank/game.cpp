@@ -1,7 +1,7 @@
 #include "game.h"
 #include <iostream>
 
-GameControl::GameControl(int x[], int y[], Direction dir[], Maze chosenMaze, Base chosenBase) {
+GameControl::GameControl(int x[], int y[], Direction dir[], Maze &chosenMaze, Base chosenBase) {
 	appearanceX = x;
 	appearanceY = y;
 	appearanceDir = dir;
@@ -15,8 +15,8 @@ GameControl::GameControl(int x[], int y[], Direction dir[], Maze chosenMaze, Bas
 }
 
 void GameControl::Init() {
-	EnemyTank enemyTank = EnemyTank(appearanceX[0], appearanceY[0], maze);
-	myTank = new MyTank(RESPAWN_X, RESPAWN_Y, maze);
+	EnemyTank enemyTank = EnemyTank(appearanceX[0], appearanceY[0], &maze);
+	myTank = new MyTank(RESPAWN_X, RESPAWN_Y, &maze);
 	enemyTanks.push_back(enemyTank);
 }
 
@@ -30,7 +30,7 @@ bool GameControl::Respawn() {
 	}
 
 	lives--;
-	myTank =new  MyTank(RESPAWN_X, RESPAWN_Y, maze);
+	myTank =new  MyTank(RESPAWN_X, RESPAWN_Y, &maze);
 	return true;
 }
 
@@ -64,7 +64,7 @@ void GameControl::MoveTank(Direction dir) {
 void GameControl::Draw() {
 	for (auto enemyBullet : enemyBullets) {
 		enemyBullet.draw();
-		std::cout << "the pos of x: " << enemyBullet.getPosX() << "the pos of y: " << enemyBullet.getPosY() << std::endl;
+//		std::cout << "the pos of x: " << enemyBullet.getPosX() << "the pos of y: " << enemyBullet.getPosY() << std::endl;
 	}
 	for (auto enemyTank : enemyTanks) {
 		enemyTank.draw();
@@ -91,6 +91,7 @@ void GameControl::UpdateAllBullet(bool &win) {
 			return;
 		}
 		else if(DeleteBlock(enemyBullets[i])){
+            std::cout << "Delete block" << std::endl;
 			DeleteEnemyBullet(i);
 			i--;
 		}
@@ -207,7 +208,7 @@ void GameControl::ProduceTank() {
 			appearanceCnt = 0;
 		}
 		EnemyTank enemyTank = EnemyTank(appearanceX[appearanceCnt],
-			appearanceY[appearanceCnt], maze);
+			appearanceY[appearanceCnt], &maze);
 		enemyTanks.push_back(enemyTank);
 		appearanceCnt++;
 	}

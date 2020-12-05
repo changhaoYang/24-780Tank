@@ -1,5 +1,7 @@
 #pragma once
 #include <map>
+#include <stdlib.h>
+#include <ctime>
 #include "fssimplewindow.h"
 #include "direction.h"
 #include "block_maze.h"
@@ -13,13 +15,13 @@ protected:
     int x, y;
 	int fireCount;
     Direction facing;
-    Maze maze;
+    Maze* maze;
     
     bool isValidPosition(const int x, const int y);
     bool isValidStep(const int x, const int y, const Direction direction, const int speed);
     
 public:
-    Tank(const int x, const int y, const Maze &maze);
+    Tank(const int x, const int y, Maze* maze);
     void draw() const;
     void decreaseHp();
 	void increaseCount();
