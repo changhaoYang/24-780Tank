@@ -1,3 +1,4 @@
+#pragma once
 #include <map>
 #include "fssimplewindow.h"
 #include "direction.h"
@@ -10,6 +11,7 @@ class Tank {
 protected:
     int hp;
     int x, y;
+	int fireCount;
     Direction facing;
     Maze maze;
     
@@ -20,6 +22,12 @@ public:
     Tank(const int x, const int y, const Maze &maze);
     void draw() const;
     void decreaseHp();
+	void increaseCount();
+	int getPosX();
+	int getPosY();
+	int getHp();
+	Direction getDir();
+	int getCount();
 };
 
 class MyTank: public Tank {

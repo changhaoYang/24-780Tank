@@ -5,6 +5,10 @@
 const int width = 20;
 const int height = 20;
 
+Base::Base() {
+
+}
+
 Base::Base(const int x, const int y) {
     this->x = x;
     this->y = y;

@@ -1,3 +1,4 @@
+#pragma once
 #include "fssimplewindow.h"
 #include "direction.h"
 

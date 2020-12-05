@@ -1,5 +1,5 @@
 #include "block_maze.h"
-int level = 0;
+int level = 2;
 Maze::Maze(void)
 {
 	
@@ -112,27 +112,26 @@ Maze::Maze(void)
 
 }
 
-void Maze::deleteBlock(int i, int j)
+bool Maze::deleteBlock(int i, int j)
 {
 	if (0 <= i && i < ColNum && 0 <= j && j < LineNum)
 	{
-		if (blocks[i][j].breakable == true)
+		if (blocks[j][i].breakable == true)
 		{
-			blocks[i][j].bType = 0;
-			blocks[i][j].breakable = false;
+			blocks[j][i].bType = 0;
+			blocks[j][i].breakable = false;
+			return true;
 		}	
+		return false;
 	}
-	else
-	{
-		std::cout << "i,j="<<i<<","<<j<<" i or j index out of range!" << std::endl;
-	}
+	return true;
 
 }
 bool Maze::ifBulletDisappear(int i, int j)
 {
 	if (0 <= i && i < ColNum && 0 <= j && j < LineNum)
 	{
-		if (blocks[i][j].bType == 1|| blocks[i][j].bType == 2)
+		if (blocks[j][i].bType == 1|| blocks[j][i].bType == 2)
 		{
 			return true;
 		}
@@ -159,10 +158,9 @@ bool Maze::ifWalkable(int i, int j)
 	}
 	else
 	{
-		std::cout << "i,j=" << i << "," << j << " i or j index out of range!" << std::endl;
+		return false;
 	}
-    
-    return false;
+
 }
 void Maze::Draw(void)const
 {
@@ -181,80 +179,80 @@ void block::DrawBlock(void)const
 	if (bType==1)//draw wooden wall
 	{
 		//std::cout << x<<" "<<y <<std::endl;
-		int a = size / 2;
-		int b = size / 3;
+		int a = BlockSize / 2;
+		int b = BlockSize / 3;
 		
 		glColor3ub(139, 69, 19);
 		glBegin(GL_QUADS);
-		glVertex2i(x * size, y * size);
-		glVertex2i(x*size + size, y * size);
-		glVertex2i(x * size + size,  (y * size + size));
-		glVertex2i(x * size, (y * size + size));
+		glVertex2i(x * BlockSize, y * BlockSize);
+		glVertex2i(x*BlockSize + BlockSize, y * BlockSize);
+		glVertex2i(x * BlockSize + BlockSize,  (y * BlockSize + BlockSize));
+		glVertex2i(x * BlockSize, (y * BlockSize + BlockSize));
 		glEnd();
 		
 
 		glColor3ub(0, 0, 0);
 		glBegin(GL_LINES);
-		glVertex2i(x * size + b, (y * size ));
-		glVertex2i(x * size + b, (y * size + a));
+		glVertex2i(x * BlockSize + b, (y * BlockSize ));
+		glVertex2i(x * BlockSize + b, (y * BlockSize + a));
 
-		glVertex2i(x * size + 2*b,  (y * size));
-		glVertex2i(x * size + 2*b, (y * size + a));
+		glVertex2i(x * BlockSize + 2*b,  (y * BlockSize));
+		glVertex2i(x * BlockSize + 2*b, (y * BlockSize + a));
 
-		glVertex2i(x * size + a, (y * size+a));
-		glVertex2i(x * size + a, (y * size + size));
+		glVertex2i(x * BlockSize + a, (y * BlockSize+a));
+		glVertex2i(x * BlockSize + a, (y * BlockSize + BlockSize));
 
-		glVertex2i(x * size , (y * size + a));
-		glVertex2i(x * size + size,  (y * size + a));
+		glVertex2i(x * BlockSize , (y * BlockSize + a));
+		glVertex2i(x * BlockSize + BlockSize,  (y * BlockSize + a));
 		glEnd();
 
 		glColor3ub(0, 0, 0);
 		glBegin(GL_LINE_STRIP);
-		glVertex2i(x * size,  y * size);
-		glVertex2i(x * size + size,  y * size);
-		glVertex2i(x * size + size,  (y * size + size));
-		glVertex2i(x * size, (y * size + size));
-		glVertex2i(x * size,  y * size);
+		glVertex2i(x * BlockSize,  y * BlockSize);
+		glVertex2i(x * BlockSize + BlockSize,  y * BlockSize);
+		glVertex2i(x * BlockSize + BlockSize,  (y * BlockSize + BlockSize));
+		glVertex2i(x * BlockSize, (y * BlockSize + BlockSize));
+		glVertex2i(x * BlockSize,  y * BlockSize);
 		glEnd();
 
 		
 	}
 	else if (bType == 2)
 	{
-		int a = size / 2;
-		int b = size / 3;
+		int a = BlockSize / 2;
+		int b = BlockSize / 3;
 
 		glColor3ub(169, 169, 169);
 		glBegin(GL_QUADS);
-		glVertex2i(x * size, y * size);
-		glVertex2i(x * size + size, y * size);
-		glVertex2i(x * size + size, (y * size + size));
-		glVertex2i(x * size, (y * size + size));
+		glVertex2i(x * BlockSize, y * BlockSize);
+		glVertex2i(x * BlockSize + BlockSize, y * BlockSize);
+		glVertex2i(x * BlockSize + BlockSize, (y * BlockSize + BlockSize));
+		glVertex2i(x * BlockSize, (y * BlockSize + BlockSize));
 		glEnd();
 
 
 		glColor3ub(0, 0, 0);
 		glBegin(GL_LINES);
-		glVertex2i(x * size + b, (y * size));
-		glVertex2i(x * size + b, (y * size + a));
+		glVertex2i(x * BlockSize + b, (y * BlockSize));
+		glVertex2i(x * BlockSize + b, (y * BlockSize + a));
 
-		glVertex2i(x * size + 2 * b, (y * size));
-		glVertex2i(x * size + 2 * b, (y * size + a));
+		glVertex2i(x * BlockSize + 2 * b, (y * BlockSize));
+		glVertex2i(x * BlockSize + 2 * b, (y * BlockSize + a));
 
-		glVertex2i(x * size + a, (y * size + a));
-		glVertex2i(x * size + a, (y * size + size));
+		glVertex2i(x * BlockSize + a, (y * BlockSize + a));
+		glVertex2i(x * BlockSize + a, (y * BlockSize + BlockSize));
 
-		glVertex2i(x * size, (y * size + a));
-		glVertex2i(x * size + size, (y * size + a));
+		glVertex2i(x * BlockSize, (y * BlockSize + a));
+		glVertex2i(x * BlockSize + BlockSize, (y * BlockSize + a));
 		glEnd();
 
 		glColor3ub(0, 0, 0);
 		glBegin(GL_LINE_STRIP);
-		glVertex2i(x * size, y * size);
-		glVertex2i(x * size + size, y * size);
-		glVertex2i(x * size + size, (y * size + size));
-		glVertex2i(x * size, (y * size + size));
-		glVertex2i(x * size, y * size);
+		glVertex2i(x * BlockSize, y * BlockSize);
+		glVertex2i(x * BlockSize + BlockSize, y * BlockSize);
+		glVertex2i(x * BlockSize + BlockSize, (y * BlockSize + BlockSize));
+		glVertex2i(x * BlockSize, (y * BlockSize + BlockSize));
+		glVertex2i(x * BlockSize, y * BlockSize);
 		glEnd();
 
 	}

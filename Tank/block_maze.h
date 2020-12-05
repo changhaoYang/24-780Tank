@@ -1,9 +1,10 @@
+#pragma once
 #include<stdlib.h>
 #include<iostream>
 //#include <vector>
 #include"fssimplewindow.h"
 
-#define size 30
+#define BlockSize 30
 #define LineNum 20
 #define ColNum 20
 
@@ -21,7 +22,7 @@ class Maze
 {
 public:
 	Maze();//constructor, initialize maze according to level
-	void deleteBlock(int i, int j);//will delete a block if it is breakable 
+	bool deleteBlock(int i, int j);//will delete a block if it is breakable 
 	bool ifWalkable(int i, int j);
 	bool ifBulletDisappear(int i, int j);
 	void Draw(void) const;

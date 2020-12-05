@@ -1,6 +1,7 @@
 #define GL_SILENCE_DEPRECATION
 
 #include "tank.h"
+#include <iostream>
 
 std::map<Direction, Direction> rotationMap = {
     {Direction::UP, Direction::RIGHT},
@@ -10,11 +11,19 @@ std::map<Direction, Direction> rotationMap = {
 };
 
 Tank::Tank(const int x, const int y, const Maze &maze) {
-    this->hp = 3;
+    hp = 3;
+	fireCount = 0;
     this->x = x;
     this->y = y;
     this->maze = maze;
     this->facing = Direction::UP;
+}
+
+void Tank::increaseCount() {
+	fireCount++;
+	if (fireCount == 200) {
+		fireCount = 0;
+	}
 }
 
 void Tank::decreaseHp() {
@@ -148,7 +157,7 @@ bool Tank::isValidStep(const int x, const int y, const Direction direction, cons
         case Direction::LEFT:
             nextX = x - speed;
             return isValidPosition(nextX, y);
-        case Direction::RIGHT:
+        default:
             nextX = x + speed;
             return isValidPosition(nextX, y);
     }
@@ -174,4 +183,24 @@ void EnemyTank::move(const int speed) {
         // Rotate 90°
         facing = rotationMap.at(facing);
     }
+}
+
+int Tank::getPosX() {
+	return x;
+}
+
+int Tank::getPosY() {
+	return y;
+}
+
+int Tank::getHp() {
+	return hp;
+}
+
+Direction Tank::getDir() {
+	return facing;
+}
+
+int Tank::getCount() {
+	return fireCount;
 }
