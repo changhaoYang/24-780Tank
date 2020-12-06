@@ -5,12 +5,12 @@
 #include <iostream>
 
 YsSoundPlayer player;
-YsSoundPlayer::SoundData bulletSound;
+YsSoundPlayer::SoundData bulletSound, startSound;
 
 static const int UPDATE_TIME = 20;
 int main(void) {
-    if (bulletSound.LoadWav("Bullet.wav") != YSOK) {
-        printf("Failed to load bullet.wav\n");
+    if (bulletSound.LoadWav("Bullet.wav") != YSOK || startSound.LoadWav("start.wav") != YSOK) {
+        printf("Failed to load bullet.wav and start.wav\n");
         return 0;
     }
     player.Start();
@@ -98,6 +98,9 @@ int main(void) {
     } else {
         threshold = 30;
     }
+    
+    // Start game sound
+    player.PlayOneShot(startSound);
 
     while (key != FSKEY_ESC) {
         key = FsInkey();
