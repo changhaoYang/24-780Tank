@@ -42,7 +42,7 @@ void gameMenu::showText(const char *text, int posX, int posY, int r, int g, int 
 }
 void gameMenu::drawButtons( const char *text, bool selected, double x1, double y1, int w, int h) {
     
-//    flash(selected);
+    flash(selected);
     drawRectangle(x1, x1 + w, y1, y1 - h);
     showText(text,x1 + w/6,y1 - 20,255,255,255);
     

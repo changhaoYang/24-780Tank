@@ -79,11 +79,12 @@ void GameControl::UpdateAllBullet(bool &win) {
 		}
 
 		Bullet bullet = enemyTanks[i].getBullet();
-		std::cout << "the pos of bullet: " << bullet.getPosX() << std::endl;
+//		std::cout << "the pos of bullet: " << bullet.getPosX() << std::endl;
 		enemyTanks[i].moveBullet(BULLET_SPEED);
 		if (CheckMyTankHit(bullet)) {
 			enemyTanks[i].disBullet();
 			myTank->decreaseHp();
+            std::cout << "I was hit!" << std::endl;
 		}
 		else if (CheckBaseHit(bullet, base)) {
 			win = false;

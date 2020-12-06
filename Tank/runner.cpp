@@ -2,6 +2,7 @@
 
 #include "game.h"
 #include "gameMenu.h"
+#include <iostream>
 
 static const int UPDATE_TIME = 20;
 int main(void) {
@@ -11,10 +12,14 @@ int main(void) {
     bool first = true;
     int key = FsInkey();
     while(!first_end) {
-        gm.drawMainMenu(first);
-        key = FsInkey();
         FsPollDevice();
         glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+        
+        gm.drawMainMenu(first);
+        key = FsInkey();
+        
+//        FsPollDevice();
+//        glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
         switch(key) {
             case FSKEY_ENTER:
                 first_end = true;
