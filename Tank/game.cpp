@@ -133,7 +133,10 @@ void GameControl::Fire(Tank &tank) {
 }
 
 void GameControl::myFire() {
-	Fire(*myTank);
+//	Fire(*myTank);
+    if (!myTank->isBullet()) {
+      myTank->fire();
+     }
 }
 
 /**
