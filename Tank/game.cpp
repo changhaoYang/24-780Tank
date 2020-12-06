@@ -146,7 +146,7 @@ void GameControl::myFire() {
  */
 bool GameControl::CheckMyTankHit(Bullet bullet) {
 	if (bullet.getPosX() <= myTank->getPosX() + 7 && bullet.getPosX() >= myTank->getPosX() - 7 &&
-		bullet.getPosY() == myTank->getPosY() + 7 && bullet.getPosY() == myTank->getPosY() - 7) {
+		bullet.getPosY() <= myTank->getPosY() + 7 && bullet.getPosY() >= myTank->getPosY() - 7) {
 		return true;
 	}
 	return false;
@@ -154,7 +154,7 @@ bool GameControl::CheckMyTankHit(Bullet bullet) {
 
 bool GameControl::CheckEnemyTankHit(Bullet bullet, EnemyTank enemyTank) {
 	if (bullet.getPosX() <= enemyTank.getPosX()+7 && bullet.getPosX() >= enemyTank.getPosX()-7 &&
-		bullet.getPosY() == enemyTank.getPosY()+7 && bullet.getPosY() == enemyTank.getPosY()-7) {
+		bullet.getPosY() <= enemyTank.getPosY()+7 && bullet.getPosY() >= enemyTank.getPosY()-7) {
 		return true;
 	}
 	return false;

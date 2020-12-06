@@ -105,7 +105,7 @@ int main(void) {
                 gameControl.MoveTank(Direction::RIGHT);
                 break;
         }
-//        gm.drawScore(gc.GetScore(),gc.GetLives());
+        gm.drawScore(gameControl.GetScore(),gameControl.GetLives());
         
         if (gameControl.GetScore() >= threshold) {
             win = true;
