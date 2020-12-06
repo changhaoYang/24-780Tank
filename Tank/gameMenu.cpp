@@ -7,7 +7,8 @@
 //
 #include "gameMenu.h"
 #include <string>
-#include<time.h>
+#include <time.h>
+#include <stdlib.h>
 
 gameMenu::gameMenu(int w, int h) {
     

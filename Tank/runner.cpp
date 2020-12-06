@@ -68,7 +68,7 @@ int main(void) {
     int x[]{ 300, 50, 500 };
     int y[]{ 50, 100, 150 };
     Direction dir[]{ Direction::DOWN, Direction::DOWN, Direction::DOWN };
-    Base base = Base(300, 585);
+    Base base = Base(300, 580);
     
     GameControl gameControl = GameControl(x, y, dir, maze, base);
 
@@ -128,7 +128,14 @@ int main(void) {
     
     if (win) {
         while(key != FSKEY_ESC){
+            key = FsInkey();
+            FsPollDevice();
+            glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+            
             gm.drawWin();
+            
+            FsSwapBuffers();
+            FsSleep(UPDATE_TIME);
         }
     } else {
         // TODO: lose display

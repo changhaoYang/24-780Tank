@@ -1,5 +1,6 @@
 #pragma once
 #include "fssimplewindow.h"
+#include <cmath>
 
 class Base {
 private:
