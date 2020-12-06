@@ -1,31 +1,123 @@
+#define GL_SILENCE_DEPRECATION
+
 #include "game.h"
+#include "gameMenu.h"
 
 static const int UPDATE_TIME = 20;
 int main(void) {
-	int x[]{ 300, 50, 500 };
-	int y[]{ 50, 100, 150 };
-	Direction dir[]{ Direction::DOWN, Direction::DOWN, Direction::DOWN };
-	Base base = Base(400, 500);
-	Maze maze(2);
-	GameControl gameControl = GameControl(x, y, dir, maze, base);
+    gameMenu gm(800, 600);
+    FsOpenWindow(16, 16, 800, 600, 1);
+    int first_end = false;
+    bool first = true;
+    int key = FsInkey();
+    while(!first_end) {
+        gm.drawMainMenu(first);
+        key = FsInkey();
+        FsPollDevice();
+        glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+        switch(key) {
+            case FSKEY_ENTER:
+                first_end = true;
+                break;
+            case FSKEY_RIGHT:
+            case FSKEY_LEFT:
+                first = !first;
+                break;
+        }
+        
+        FsSwapBuffers();
+        FsSleep(UPDATE_TIME);
+        
+    }
+    if(!first) {
+        return 0;
+    }
+    
+    int idx = 1;
+    int second_end = false;
+    while(!second_end) {
+        key = FsInkey();
+        FsPollDevice();
+        glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+        gm.drawSelectLevel(idx);
+        switch(key) {
+            case FSKEY_ENTER:
+                second_end = true;
+                break;
+            case FSKEY_UP:
+                idx--;
+                if (idx == 0) idx = 3;
+                break;
+            case FSKEY_DOWN:
+                idx++;
+                if (idx == 4) idx = 1;
+                break;
+        }
+        FsSwapBuffers();
+        FsSleep(UPDATE_TIME);
+        
+    }
+    Maze maze(idx);
+    
+    //start game
+    int x[]{ 300, 50, 500 };
+    int y[]{ 50, 100, 150 };
+    Direction dir[]{ Direction::DOWN, Direction::DOWN, Direction::DOWN };
+    Base base = Base(400, 500);
+    
+    GameControl gameControl = GameControl(x, y, dir, maze, base);
 
-	FsOpenWindow(16, 16, 800, 600, 1);
-	//glClearColor(0, 0, 0, 0);
-	int key = FsInkey();
-	bool win = true;
+    
+    //glClearColor(0, 0, 0, 0);
+    key = FsInkey();
+    bool win = false;
+    int threshold = 50;
 
-	while (key != FSKEY_ESC) {
-		key = FsInkey();
-		FsPollDevice();
-		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+    while (key != FSKEY_ESC) {
+        key = FsInkey();
+        FsPollDevice();
+        glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-		gameControl.Draw();
-		gameControl.UpdatePosition();
-		gameControl.UpdateAllBullet(win);
-		gameControl.ProduceTank();
-		gameControl.increaseTime();
+        gameControl.Draw();
+        gameControl.UpdatePosition();
+        gameControl.UpdateAllBullet(win);
+        gameControl.ProduceTank();
+        gameControl.increaseTime();
+        switch(key) {
+            case FSKEY_SPACE:
+                gameControl.myFire();
+                break;
+            case FSKEY_UP:
+                gameControl.MoveTank(Direction::UP);
+                break;
+            case FSKEY_DOWN:
+                gameControl.MoveTank(Direction::DOWN);
+                break;
+            case FSKEY_LEFT:
+                gameControl.MoveTank(Direction::LEFT);
+                break;
+            case FSKEY_RIGHT:
+                gameControl.MoveTank(Direction::RIGHT);
+                break;
+        }
+//        gm.drawScore(gc.GetScore(),gc.GetLives());
+        
+        if (gameControl.GetScore() >= threshold) {
+            win = true;
+            break;
+        }
+        if (gameControl.GetLives() == 0) {
+            break;
+        }
+        if (win)
+        while(key != FSKEY_ESC){
+            gm.drawWin();
+        }
+        
 
-		FsSwapBuffers();
-		FsSleep(UPDATE_TIME);
-	}
+        FsSwapBuffers();
+        FsSleep(UPDATE_TIME);
+    }
+    
+    
 }

@@ -1,3 +1,4 @@
+#define GL_SILENCE_DEPRECATION
 //
 //  gameMenu.cpp
 //  group_tankwar
@@ -53,7 +54,7 @@ void gameMenu::drawMainMenu(bool first) {
 //    else
 //        glColor3ub(128, 128, 128);
 //
-    glClearColor(0,0,0,0);
+//    glClearColor(0,0,0,0);
 //    bool selected = false;
     glColor3ub(255, 128, 0);
     glRasterPos2i(width / 3, height / 4);
@@ -64,7 +65,7 @@ void gameMenu::drawMainMenu(bool first) {
     drawButtons("    quit    ", !first, 550, 300, 100, 50);
 }
 void gameMenu::drawSelectLevel(int idx) {
-    glClearColor(0,0,0,0);
+//    glClearColor(0,0,0,0);
 //    bool selected = false;
     string level{" level "};
     for (int i = 1; i < 4; i++){
@@ -83,20 +84,6 @@ void gameMenu::drawScore(int score, int lives) {
     drawButtons(to_string(score).c_str(),first, 720, 50, 50, 50);
     drawButtons(to_string(lives).c_str(),first, 720, 150, 50, 50);
     
-}
-
-void Firework:Blink(){
-    int color = rand() % 4 + 1;
-    switch (color) {
-        case 1:glColor3ub(176, 224, 230);//grey blue
-            break;
-        case 2:glColor3ub(192, 192, 192);//sliver
-            break;
-        case 3:glColor3ub(245, 222, 179);//light yellow
-            break;
-        case 4:glColor3ub(128, 128, 128);//gray
-            break;
-    }
 }
 
 class Firework {
@@ -122,7 +109,7 @@ Firework::Firework(double newx, double newy) {
 }
 
 
-void Firework:Blink(){
+void Firework::Blink(){
     int color = rand() % 4 + 1;
     switch (color) {
         case 1:glColor3ub(176, 224, 230);//grey blue
