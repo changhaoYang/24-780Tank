@@ -167,7 +167,7 @@ bool GameControl::CheckEnemyTankHit(Bullet bullet, EnemyTank enemyTank) {
  */
 bool GameControl::CheckBaseHit(Bullet bullet, Base base) {
 	if (bullet.getPosX() <= base.getPosX()+GRID_SIZE/2 && bullet.getPosX() >= base.getPosX() - GRID_SIZE / 2 &&
-		bullet.getPosY() <= base.getPosY() + GRID_SIZE / 2 && bullet.getPosY() <= base.getPosY() - GRID_SIZE / 2) {
+		bullet.getPosY() <= base.getPosY() + GRID_SIZE / 2 && bullet.getPosY() >= base.getPosY() - GRID_SIZE / 2) {
 		return true;
 	}
 	return false;

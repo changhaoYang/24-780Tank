@@ -117,6 +117,7 @@ int main(void) {
         }
         
         if (!baseAlive) {
+            std::cout << "Base destroyed!" << std::endl;
             break;
         }
 
