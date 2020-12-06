@@ -13,6 +13,7 @@ static const int RESPAWN_X = 200;
 static const int RESPAWN_Y = 500;
 static const int TANK_SPEED = 2;
 static const int BULLET_SPEED = 4;
+static const int TANKS_MAX = 6;
 
 class GameControl {
 public:

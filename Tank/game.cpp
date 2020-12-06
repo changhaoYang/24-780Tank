@@ -191,6 +191,9 @@ void GameControl::UpdateScore() {
 }
 
 void GameControl::ProduceTank() {
+	if (enemyTanks.size() > TANKS_MAX) {
+		return;
+	}
 	if (timeCount == 0) {
 		
 		if (appearanceCnt == 3) {
