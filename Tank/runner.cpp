@@ -158,7 +158,7 @@ int main(void) {
             gm.drawWin();
             
             FsSwapBuffers();
-            FsSleep(UPDATE_TIME);
+            FsSleep(UPDATE_TIME * 8);
         }
     } else {
         while(key != FSKEY_ESC) {
