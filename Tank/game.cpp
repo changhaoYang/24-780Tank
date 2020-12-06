@@ -69,6 +69,7 @@ void GameControl::Draw() {
      }
 	maze.Draw();
 	myTank->draw();
+    base.draw();
 }
 
 /**
@@ -112,6 +113,7 @@ void GameControl::UpdateAllBullet(bool &win) {
        enemyTanks[j].decreaseHp();
        if (enemyTanks[j].getHp() == 0) {
         DeleteTank(j);
+           UpdateScore();
        }
        break;
       }

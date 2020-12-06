@@ -68,7 +68,7 @@ int main(void) {
     int x[]{ 300, 50, 500 };
     int y[]{ 50, 100, 150 };
     Direction dir[]{ Direction::DOWN, Direction::DOWN, Direction::DOWN };
-    Base base = Base(400, 500);
+    Base base = Base(300, 585);
     
     GameControl gameControl = GameControl(x, y, dir, maze, base);
 
@@ -76,7 +76,8 @@ int main(void) {
     //glClearColor(0, 0, 0, 0);
     key = FsInkey();
     bool win = false;
-    int threshold = 50;
+    bool baseAlive = true;
+    int threshold = 1;
 
     while (key != FSKEY_ESC) {
         key = FsInkey();
@@ -85,7 +86,7 @@ int main(void) {
 
         gameControl.Draw();
         gameControl.UpdatePosition();
-        gameControl.UpdateAllBullet(win);
+        gameControl.UpdateAllBullet(baseAlive);
         gameControl.ProduceTank();
         gameControl.increaseTime();
         switch(key) {
@@ -114,15 +115,21 @@ int main(void) {
         if (gameControl.GetLives() == 0) {
             break;
         }
-        if (win)
-        while(key != FSKEY_ESC){
-            gm.drawWin();
-        }
         
+        if (!baseAlive) {
+            break;
+        }
 
         FsSwapBuffers();
         FsSleep(UPDATE_TIME);
     }
     
     
+    if (win) {
+        while(key != FSKEY_ESC){
+            gm.drawWin();
+        }
+    } else {
+        // TODO: lose display
+    }
 }
