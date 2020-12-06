@@ -216,7 +216,7 @@ void GameControl::ProduceTank() {
 
 void GameControl::increaseTime() {
 	timeCount++;
-	if (timeCount == 500) {
+	if (timeCount == 300) {
 		timeCount = 0;
 	}
 }

@@ -65,10 +65,10 @@ int main(void) {
     Maze maze(idx);
     
     //start game
-    int x[]{ 300, 50, 500 };
-    int y[]{ 50, 100, 150 };
+    int x[]{ 300, 400, 500 };
+    int y[]{ 50, 50, 50 };
     Direction dir[]{ Direction::DOWN, Direction::DOWN, Direction::DOWN };
-    Base base = Base(300, 580);
+    Base base = Base(300, 570);
     
     GameControl gameControl = GameControl(x, y, dir, maze, base);
 
@@ -77,7 +77,15 @@ int main(void) {
     key = FsInkey();
     bool win = false;
     bool baseAlive = true;
-    int threshold = 1;
+    
+    int threshold = 0;
+    if (idx == 1) {
+        threshold = 10;
+    } else if (idx == 2) {
+        threshold = 20;
+    } else {
+        threshold = 30;
+    }
 
     while (key != FSKEY_ESC) {
         key = FsInkey();
