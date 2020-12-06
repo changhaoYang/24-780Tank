@@ -64,7 +64,9 @@ void GameControl::Draw() {
 			enemyTank.getBullet().draw();
 		}
 	}
-	myTank->getBullet().draw();
+    if (myTank->isBullet()) {
+      myTank->getBullet().draw();
+     }
 	maze.Draw();
 	myTank->draw();
 }
@@ -85,6 +87,7 @@ void GameControl::UpdateAllBullet(bool &win) {
 			enemyTanks[i].disBullet();
 			myTank->decreaseHp();
             std::cout << "I was hit!" << std::endl;
+            std::cout << myTank->getHp() << std::endl;
 		}
 		else if (CheckBaseHit(bullet, base)) {
 			win = false;
@@ -92,6 +95,7 @@ void GameControl::UpdateAllBullet(bool &win) {
 		}
 		else if(DeleteBlock(bullet)){
 			enemyTanks[i].disBullet();
+            std::cout << "Block deleted!" << std::endl;
 		}
 	}
 	if (myTank->getHp() == 0) {
@@ -101,23 +105,21 @@ void GameControl::UpdateAllBullet(bool &win) {
 		}
 	}
 
-    // TODO: Compile error
-//	Bullet *myBullet = &(myTank->getBullet());
-//	for (auto j = 0; j < enemyTanks.size(); j++) {
-//		myBullet->move(BULLET_SPEED);
-//		if (CheckEnemyTankHit(*myBullet, enemyTanks[j])) {
-//			myTank->disBullet();
-//			enemyTanks[j].decreaseHp();
-//			if (enemyTanks[j].getHp() == 0) {
-//				DeleteTank(j);
-//			}
-//			break;
-//		}
-//	}
-//
-//	if (myTank->isBullet() && DeleteBlock(*myBullet)) {
-//		myTank->disBullet();
-//	}
+    for (auto j = 0; j < enemyTanks.size(); j++) {
+      myTank->moveBullet(BULLET_SPEED);
+      if (CheckEnemyTankHit(myTank->getBullet(), enemyTanks[j])) {
+       myTank->disBullet();
+       enemyTanks[j].decreaseHp();
+       if (enemyTanks[j].getHp() == 0) {
+        DeleteTank(j);
+       }
+       break;
+      }
+     }
+
+     if (myTank->isBullet() && DeleteBlock(myTank->getBullet())) {
+      myTank->disBullet();
+     }
 
 	for (auto &enemyTank : enemyTanks) {
 		Fire(enemyTank);

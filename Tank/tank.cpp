@@ -9,7 +9,7 @@ Direction directions[4] = {
 
 Tank::Tank(const int x, const int y, Maze* maze) {
 	is_bullet_ = false;
-    hp = 3;
+    hp = 1;
 	fireCount = 0;
     this->x = x;
     this->y = y;
@@ -132,25 +132,25 @@ EnemyTank::EnemyTank(const int x, const int y, Maze* maze) : Tank(x, y, maze) {
 void MyTank::move(const Direction direction, const int speed) {
     switch (direction) {
         case Direction::UP:
-            if (isValidStep(x, y, Direction::UP, speed + 10)) {
+            if (isValidStep(x, y, Direction::UP, speed + 7)) {
                 y -= speed;
                 facing = Direction::UP;
             }
             break;
         case Direction::DOWN:
-            if (isValidStep(x, y, Direction::DOWN, speed + 10)) {
+            if (isValidStep(x, y, Direction::DOWN, speed + 7)) {
                 y += speed;
                 facing = Direction::DOWN;
             }
             break;
         case Direction::LEFT:
-            if (isValidStep(x, y, Direction::LEFT, speed + 10)) {
+            if (isValidStep(x, y, Direction::LEFT, speed + 7)) {
                 x -= speed;
                 facing = Direction::LEFT;
             }
             break;
         case Direction::RIGHT:
-            if (isValidStep(x, y, Direction::RIGHT, speed + 10)) {
+            if (isValidStep(x, y, Direction::RIGHT, speed + 7)) {
                 x += speed;
                 facing = Direction::RIGHT;
             }
