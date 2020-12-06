@@ -138,6 +138,17 @@ int main(void) {
             FsSleep(UPDATE_TIME);
         }
     } else {
-        // TODO: lose display
+        while(key != FSKEY_ESC) {
+            key = FsInkey();
+            FsPollDevice();
+            glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+            glClearColor(0,0,0,0);
+            
+            glRasterPos2d(300, 300);
+            YsGlDrawFontBitmap32x48("Game Over");
+            
+            FsSwapBuffers();
+            FsSleep(UPDATE_TIME);
+        }
     }
 }
