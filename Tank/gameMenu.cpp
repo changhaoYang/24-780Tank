@@ -62,15 +62,15 @@ void gameMenu::drawMainMenu(bool first) {
     YsGlDrawFontBitmap32x48("Tank War");
 //    drawButtons("  start game  ", selected, 150, 300, 100, 50);
     
-    drawButtons(" select level ", first, 350, 300, 100, 50);
-    drawButtons("    quit    ", !first, 550, 300, 100, 50);
+    drawButtons("select level ", first, 200, 300, 100, 50);
+    drawButtons("    quit    ", !first, 500, 300, 100, 50);
 }
 void gameMenu::drawSelectLevel(int idx) {
 //    glClearColor(0,0,0,0);
 //    bool selected = false;
     string level{" level "};
     for (int i = 1; i < 4; i++){
-        drawButtons((level + to_string(i)).c_str(), idx == i, 200, 200 + (i - 1) * 150, 100, 50);
+        drawButtons((level + to_string(i)).c_str(), idx == i, 350, 200 + (i - 1) * 150, 100, 50);
     }
 //    drawButtons("  level 1", selected, 200, 200, 100, 50);
 //    drawButtons("  level 2", selected, 200, 350, 100, 50);

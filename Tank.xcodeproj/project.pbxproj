@@ -12,6 +12,10 @@
 		55423C45257B33190004A58A /* ysglfontdata.c in Sources */ = {isa = PBXBuildFile; fileRef = 55423C43257B33190004A58A /* ysglfontdata.c */; };
 		55423C49257BF4270004A58A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55423C48257BF4270004A58A /* Info.plist */; };
 		55A91F72257C6BC000FE5C2C /* gameMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A91F70257C6BC000FE5C2C /* gameMenu.cpp */; };
+		55A91F75257C8D3400FE5C2C /* Bullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = 55A91F74257C8D3400FE5C2C /* Bullet.wav */; };
+		55A91F79257C8D8100FE5C2C /* yssimplesound_macosx_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A91F77257C8D8100FE5C2C /* yssimplesound_macosx_cpp.cpp */; };
+		55A91F7A257C8D8100FE5C2C /* yssimplesound_macosx_objc.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A91F78257C8D8100FE5C2C /* yssimplesound_macosx_objc.m */; };
+		55A91F7E257C8E7600FE5C2C /* yssimplesound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55A91F7C257C8E7600FE5C2C /* yssimplesound.cpp */; };
 		55BD779625685D1B000E66C5 /* fssimplewindowobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BD779425685D1B000E66C5 /* fssimplewindowobjc.m */; };
 		55BD779725685D1B000E66C5 /* fssimplewindowcpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55BD779525685D1B000E66C5 /* fssimplewindowcpp.cpp */; };
 		55BD779B25685D35000E66C5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BD779A25685D35000E66C5 /* OpenGL.framework */; };
@@ -30,6 +34,11 @@
 		55423C48257BF4270004A58A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55A91F70257C6BC000FE5C2C /* gameMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gameMenu.cpp; sourceTree = "<group>"; };
 		55A91F71257C6BC000FE5C2C /* gameMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gameMenu.h; sourceTree = "<group>"; };
+		55A91F74257C8D3400FE5C2C /* Bullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bullet.wav; sourceTree = "<group>"; };
+		55A91F77257C8D8100FE5C2C /* yssimplesound_macosx_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yssimplesound_macosx_cpp.cpp; sourceTree = "<group>"; };
+		55A91F78257C8D8100FE5C2C /* yssimplesound_macosx_objc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = yssimplesound_macosx_objc.m; sourceTree = "<group>"; };
+		55A91F7C257C8E7600FE5C2C /* yssimplesound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yssimplesound.cpp; sourceTree = "<group>"; };
+		55A91F7D257C8E7600FE5C2C /* yssimplesound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yssimplesound.h; sourceTree = "<group>"; };
 		55BD777D25685C88000E66C5 /* Tank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55BD779325685D1B000E66C5 /* fssimplewindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fssimplewindow.h; sourceTree = "<group>"; };
 		55BD779425685D1B000E66C5 /* fssimplewindowobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fssimplewindowobjc.m; sourceTree = "<group>"; };
@@ -78,6 +87,11 @@
 		55BD777F25685C88000E66C5 /* Tank */ = {
 			isa = PBXGroup;
 			children = (
+				55A91F7C257C8E7600FE5C2C /* yssimplesound.cpp */,
+				55A91F7D257C8E7600FE5C2C /* yssimplesound.h */,
+				55A91F77257C8D8100FE5C2C /* yssimplesound_macosx_cpp.cpp */,
+				55A91F78257C8D8100FE5C2C /* yssimplesound_macosx_objc.m */,
+				55A91F74257C8D3400FE5C2C /* Bullet.wav */,
 				55A91F70257C6BC000FE5C2C /* gameMenu.cpp */,
 				55A91F71257C6BC000FE5C2C /* gameMenu.h */,
 				55423C48257BF4270004A58A /* Info.plist */,
@@ -166,6 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A91F75257C8D3400FE5C2C /* Bullet.wav in Resources */,
 				55423C49257BF4270004A58A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,11 +192,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A91F7A257C8D8100FE5C2C /* yssimplesound_macosx_objc.m in Sources */,
 				55BD779725685D1B000E66C5 /* fssimplewindowcpp.cpp in Sources */,
 				55423C45257B33190004A58A /* ysglfontdata.c in Sources */,
+				55A91F7E257C8E7600FE5C2C /* yssimplesound.cpp in Sources */,
 				55A91F72257C6BC000FE5C2C /* gameMenu.cpp in Sources */,
 				55423C3B257B2F9B0004A58A /* game.cpp in Sources */,
 				55BD779625685D1B000E66C5 /* fssimplewindowobjc.m in Sources */,
+				55A91F79257C8D8100FE5C2C /* yssimplesound_macosx_cpp.cpp in Sources */,
 				55BD77AC256869C6000E66C5 /* base.cpp in Sources */,
 				55BD77A725686301000E66C5 /* bullet.cpp in Sources */,
 				55423C3C257B2F9B0004A58A /* runner.cpp in Sources */,

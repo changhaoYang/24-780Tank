@@ -7,6 +7,7 @@
 #include "base.h"
 #include "bullet.h"
 #include "tank.h"
+#include "yssimplesound.h"
 
 static const int GRID_SIZE = 30;
 static const int RESPAWN_X = 200;

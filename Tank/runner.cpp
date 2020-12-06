@@ -4,8 +4,17 @@
 #include "gameMenu.h"
 #include <iostream>
 
+YsSoundPlayer player;
+YsSoundPlayer::SoundData bullet;
+
 static const int UPDATE_TIME = 20;
 int main(void) {
+    if (bullet.LoadWav("Bullet.wav") != YSOK) {
+        printf("Failed to load bullet.wav\n");
+        return 0;
+    }
+    player.Start();
+    
     gameMenu gm(800, 600);
     FsOpenWindow(16, 16, 800, 600, 1);
     int first_end = false;
@@ -56,6 +65,9 @@ int main(void) {
             case FSKEY_DOWN:
                 idx++;
                 if (idx == 4) idx = 1;
+                break;
+            case FSKEY_ESC:
+                second_end = true;
                 break;
         }
         FsSwapBuffers();

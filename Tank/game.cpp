@@ -39,11 +39,9 @@ bool GameControl::Respawn() {
  * Update all elements' position
  */
 void GameControl::UpdatePosition() {
-	for (auto &enemyTank : enemyTanks) {
-		enemyTank.move(TANK_SPEED);
-		enemyTank.getBullet().move(BULLET_SPEED);
-	}
-	myTank->getBullet().move(BULLET_SPEED);
+ for (auto &enemyTank : enemyTanks) {
+  enemyTank.move(TANK_SPEED);
+ }
 }
 
 /**
