@@ -132,20 +132,28 @@ EnemyTank::EnemyTank(const int x, const int y, Maze* maze) : Tank(x, y, maze) {
 void MyTank::move(const Direction direction, const int speed) {
     switch (direction) {
         case Direction::UP:
-            y -= speed;
-            facing = Direction::UP;
+            if (isValidStep(x, y, Direction::UP, speed + 10)) {
+                y -= speed;
+                facing = Direction::UP;
+            }
             break;
         case Direction::DOWN:
-            y += speed;
-            facing = Direction::DOWN;
+            if (isValidStep(x, y, Direction::DOWN, speed + 10)) {
+                y += speed;
+                facing = Direction::DOWN;
+            }
             break;
         case Direction::LEFT:
-            x -= speed;
-            facing = Direction::LEFT;
+            if (isValidStep(x, y, Direction::LEFT, speed + 10)) {
+                x -= speed;
+                facing = Direction::LEFT;
+            }
             break;
         case Direction::RIGHT:
-            x += speed;
-            facing = Direction::RIGHT;
+            if (isValidStep(x, y, Direction::RIGHT, speed + 10)) {
+                x += speed;
+                facing = Direction::RIGHT;
+            }
             break;
     }
 }

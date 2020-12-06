@@ -51,7 +51,7 @@ void GameControl::UpdatePosition() {
  * @param dir Player's tank's moving direction
  */
 void GameControl::MoveTank(Direction dir) {
-	myTank->move(dir, TANK_SPEED);
+	myTank->move(dir, TANK_SPEED * 3);
 }
 
 /**
