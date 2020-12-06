@@ -18,7 +18,7 @@ static const int TANKS_MAX = 6;
 
 class GameControl {
 public:
-	GameControl(int x[], int y[], Direction dir[], Maze &chosenMaze, Base chosenBase);
+	GameControl(int x[], int y[], Direction dir[], Maze &chosenMaze, Base chosenBase, YsSoundPlayer::SoundData* chosenSound, YsSoundPlayer* player);
 	void Init();
 	bool Respawn();
 	void UpdatePosition();
@@ -54,4 +54,6 @@ private:
 	Direction *appearanceDir;
 	Base base;
 	int timeCount;
+    YsSoundPlayer::SoundData* bulletSound;
+    YsSoundPlayer* player;
 };

@@ -5,11 +5,11 @@
 #include <iostream>
 
 YsSoundPlayer player;
-YsSoundPlayer::SoundData bullet;
+YsSoundPlayer::SoundData bulletSound;
 
 static const int UPDATE_TIME = 20;
 int main(void) {
-    if (bullet.LoadWav("Bullet.wav") != YSOK) {
+    if (bulletSound.LoadWav("Bullet.wav") != YSOK) {
         printf("Failed to load bullet.wav\n");
         return 0;
     }
@@ -82,7 +82,7 @@ int main(void) {
     Direction dir[]{ Direction::DOWN, Direction::DOWN, Direction::DOWN };
     Base base = Base(300, 570);
     
-    GameControl gameControl = GameControl(x, y, dir, maze, base);
+    GameControl gameControl = GameControl(x, y, dir, maze, base, &bulletSound, &player);
 
     
     //glClearColor(0, 0, 0, 0);

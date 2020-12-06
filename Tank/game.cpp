@@ -1,12 +1,14 @@
 #include "game.h"
 #include <iostream>
 
-GameControl::GameControl(int x[], int y[], Direction dir[], Maze &chosenMaze, Base chosenBase) {
+GameControl::GameControl(int x[], int y[], Direction dir[], Maze &chosenMaze, Base chosenBase, YsSoundPlayer::SoundData* chosenSound, YsSoundPlayer* chosenPlayer) {
 	appearanceX = x;
 	appearanceY = y;
 	appearanceDir = dir;
 	maze = chosenMaze;
 	base = chosenBase;
+    bulletSound = chosenSound;
+    player = chosenPlayer;
 
 	Init();
 }
@@ -138,6 +140,7 @@ void GameControl::myFire() {
 //	Fire(*myTank);
     if (!myTank->isBullet()) {
       myTank->fire();
+        player->PlayOneShot(*bulletSound);
      }
 }
 
